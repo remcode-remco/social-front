@@ -1,9 +1,7 @@
-import { SetStateAction, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import AsyncSelect from 'react-select/async';
 import { NearlyContext } from '../context/context';
-import { UserData } from '../typings/typings';
-
 type LocationSearchResult = {
   location_id:number;
   city:string;
@@ -14,32 +12,35 @@ type LocationSearchResult = {
 const NavigationInputText = ({setShowCitySelect,city}:{setShowCitySelect:(showCitySelect:boolean)=>void,city:string}) => {
   const { userData, setUserData } = useContext(NearlyContext)
 
+  
   const [inputValue, setValue] = useState('');
   const [selectedValue, setSelectedValue] = useState(null);
 
   // handle input change event
-  const handleInputChange = (value: SetStateAction<string>) => {
+  const handleInputChange = value => {
     setValue(value);
   };
 
   // handle selection
-  const handleChange = (value: SetStateAction<null>) => {
+  const handleChange = value => {
     setSelectedValue(value);
-    setUserData((prevUserData: UserData) => ({
+    setUserData(prevUserData => ({
       ...prevUserData,
       selectedArea: {...prevUserData.selectedArea, location_id:value.id, city:value.name }}))
-      
-    
-    setShowCitySelect(false)
+      setShowCitySelect(false)
   }
 
+  // const url:string = "https://api.nearly.site/locations/search?search="
+  const url:string = "http://localhost:3001/locations/search?search="
   // load options using API call
-  const loadOptions = (inputValue:string) => {
-      return fetch(`https://api.nearly.site/locations/search?search=${inputValue}`).then(res => res.json())
+  const loadOptions = (inputValue) => {
+      return fetch(url+inputValue).then(res => res.json())
   };
   
   return (
-    <AsyncSelect
+    <AsyncSelect  
+    
+  className="w-[200px]"
       cacheOptions
       defaultOptions
       value={selectedValue}
@@ -48,6 +49,7 @@ const NavigationInputText = ({setShowCitySelect,city}:{setShowCitySelect:(showCi
       loadOptions={loadOptions}
       onInputChange={handleInputChange}
       onChange={handleChange}
+      autoFocus={true}
     />
   );
 }

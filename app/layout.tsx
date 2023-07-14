@@ -20,21 +20,23 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
   const [userData, setUserData] = useState<UserData>({
     name:"Test",
     email:"e@mail.com",
-    location_id:1759,
+    location_id:6078,
     selectedArea: {
       city:"Beaver Dams (NY)",
-      radius:10,
-      location_id:1759
+      radius:10000,
+      location_id:6078
     }
   });
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <NearlyContext.Provider value={{userData, setUserData}}>
-          <Navigation />
-          {children}
-        </NearlyContext.Provider>
+      <body className=''>
+        <div className='max-w-lg mx-auto'>
+          <NearlyContext.Provider value={{userData, setUserData}}>
+            <Navigation />
+            {children}
+          </NearlyContext.Provider>
+        </div>
       </body>
     </html>
   )

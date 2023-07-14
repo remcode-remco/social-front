@@ -15,3 +15,8 @@ export interface ContextProps {
   userData:UserData;
   setUserData:(userData:UserData)=>void;
 }
+
+export interface ContextPropsReplies {
+  showReplies:boolean;
+  setShowReplies:(showReplies:boolean)=>void;
+}
