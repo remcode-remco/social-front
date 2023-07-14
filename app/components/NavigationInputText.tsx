@@ -1,7 +1,8 @@
-import { useContext, useState } from 'react';
+import { SetStateAction, useContext, useState } from 'react';
 
 import AsyncSelect from 'react-select/async';
 import { NearlyContext } from '../context/context';
+import { UserData } from '../typings/typings';
 type LocationSearchResult = {
   location_id:number;
   city:string;
@@ -9,7 +10,7 @@ type LocationSearchResult = {
 }
 
 
-const NavigationInputText = ({city}:{city:string}) => {  
+const NavigationInputText = ({setShowCitySelect,city}:{setShowCitySelect:(showCitySelect:boolean)=>void,city:string}) => {
   const { userData, setUserData } = useContext(NearlyContext)
 
   
@@ -17,17 +18,19 @@ const NavigationInputText = ({city}:{city:string}) => {
   const [selectedValue, setSelectedValue] = useState(null);
 
   // handle input change event
-  const handleInputChange = value => {
+  const handleInputChange = (value: SetStateAction<string>) => {
     setValue(value);
   };
 
   // handle selection
-  const handleChange = value => {
+  const handleChange = (value: SetStateAction<null>) => {
     setSelectedValue(value);
-    setUserData(prevUserData => ({
+    setUserData((prevUserData: UserData) => ({
       ...prevUserData,
       selectedArea: {...prevUserData.selectedArea, location_id:value.id, city:value.name }}))
-
+      
+    
+    setShowCitySelect(false)
   }
 
   // load options using API call

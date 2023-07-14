@@ -7,7 +7,7 @@ const NavigationCityChange = ({setShowCitySelect,city}:{setShowCitySelect:(showC
     <>
       {/* <NavigationCityName setShowCitySelect={setShowCitySelect} city={city} /> */}
       {/* <NavigationInputText value={country} /> */}
-      <NavigationInputText city={city} />
+      <NavigationInputText city={city} setShowCitySelect={setShowCitySelect} />
     </>
   )
 }
