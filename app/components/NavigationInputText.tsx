@@ -3,6 +3,7 @@ import { SetStateAction, useContext, useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { NearlyContext } from '../context/context';
 import { UserData } from '../typings/typings';
+
 type LocationSearchResult = {
   location_id:number;
   city:string;
@@ -13,7 +14,6 @@ type LocationSearchResult = {
 const NavigationInputText = ({setShowCitySelect,city}:{setShowCitySelect:(showCitySelect:boolean)=>void,city:string}) => {
   const { userData, setUserData } = useContext(NearlyContext)
 
-  
   const [inputValue, setValue] = useState('');
   const [selectedValue, setSelectedValue] = useState(null);
 
@@ -34,7 +34,7 @@ const NavigationInputText = ({setShowCitySelect,city}:{setShowCitySelect:(showCi
   }
 
   // load options using API call
-  const loadOptions = (inputValue) => {
+  const loadOptions = (inputValue:string) => {
       return fetch(`https://api.nearly.site/locations/search?search=${inputValue}`).then(res => res.json())
   };
   
