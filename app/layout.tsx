@@ -6,7 +6,7 @@ import { Inter } from 'next/font/google'
 import Navigation from './components/Navigation'
 import { useState } from 'react';
 import { NearlyContext } from './context/context';
-import {  UserData } from './typings/typings'
+import {  SelectedArea, UserData } from './typings/typings'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,19 +20,22 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
   const [userData, setUserData] = useState<UserData>({
     name:"Test",
     email:"e@mail.com",
-    location_id:6078,
-    selectedArea: {
-      city:"Beaver Dams (NY)",
-      radius:10000,
-      location_id:6078
-    }
+    location_id:7782
+  });
+
+  const [selectedArea, setSelectedArea] = useState<SelectedArea>({
+    name:"Millwood (NY)",
+    radius:10000,
+    id:7782,
+    latitude: 41.19472,
+    longitude: -73.8002
   });
 
   return (
     <html lang="en">
       <body className=''>
         <div className='max-w-lg mx-auto'>
-          <NearlyContext.Provider value={{userData, setUserData}}>
+          <NearlyContext.Provider value={{userData, setUserData, selectedArea, setSelectedArea}}>
             <Navigation />
             {children}
           </NearlyContext.Provider>

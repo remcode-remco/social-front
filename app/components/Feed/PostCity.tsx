@@ -1,10 +1,10 @@
 
 
-const PostCity = ({city}:{city:string}) => {
+const PostCity = ({name}:{name:string}) => {
 
   return (
     <span className="font-xs text-right">
-      in {city}
+      in {name}
     </span>
   )
 }

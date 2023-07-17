@@ -15,7 +15,7 @@ const FeedPost = ({post}) => {
         <PostContent content={post.content} />
         <PostSubtext>
           <PostTime time={post.updated_at} />
-          <PostCity city={post.location.name} />
+          <PostCity name={post.location.name} />
         </PostSubtext>
         <NearlyContextReplies.Provider value={{showReplies,setShowReplies}}>
           <ActionBanner data={post} />

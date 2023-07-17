@@ -1,19 +1,22 @@
 export type SelectedArea = {
-  location_id?: string;
-  city?: string;
-  radius?: string;
+  id: number;
+  name: string;
+  radius: number;
+  longitude: number;
+  latitude: number;
 };
 
 export type UserData = {
   name?: string;
   email?: string;
   location_id?: number;
-  selectedArea?: SelectedArea;
 };
 
 export interface ContextProps {
   userData:UserData;
   setUserData:(userData:UserData)=>void;
+  selectedArea:SelectedArea;
+  setSelectedArea:(selectedArea:SelectedArea)=>void;
 }
 
 export interface ContextPropsReplies {
