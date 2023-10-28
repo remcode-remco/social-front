@@ -13,8 +13,8 @@ const NavigationInputText = ({selectedArea,setSelectedAreaChanges}:{selectedArea
     const value = e.target.value
     setSearchTerm(value)
 
-    // const url:string = "https://api.nearly.site/locations/search?search="
-    const url:string = "http://localhost:3001/locations/search?search="
+    const url:string = "https://api.nearly.site/locations/search?search="
+    // const url:string = "http://localhost:3001/locations/search?search="
   
     fetch(url+value)
       .then(response => response.json())
