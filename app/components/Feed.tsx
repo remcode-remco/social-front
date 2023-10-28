@@ -8,17 +8,18 @@ const Feed = () => {
   const { selectedArea } = useContext(NearlyContext);
   const [posts,setPosts]=useState([])
   
-  // const url:string = 'https://api.nearly.site/posts?location_id='+selectedArea.location_id+'&radius='+selectedArea.radius
-  const url:string = 'http://localhost:3001/posts?location_id='+selectedArea.id+'&radius='+selectedArea.radius
+  const url:string = 'https://api.nearly.site/posts?location_id='+selectedArea.location_id+'&radius='+selectedArea.radius
+  // const url:string = 'http://localhost:3001/posts?location_id='+selectedArea.id+'&radius='+selectedArea.radius
 	
   const fetchData = async () => {
+    console.log(url)
     const response = await fetch(url)
     const data = await response.json()
     return data
   }
 
   const { data, error, isLoading  } = useSWR(url, fetchData)
-  // setPosts(data)
+  
   useEffect(()=>{
     if (data && selectedArea) {
       setPosts(data.posts)
