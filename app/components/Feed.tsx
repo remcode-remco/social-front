@@ -8,8 +8,8 @@ const Feed = () => {
   const { selectedArea } = useContext(NearlyContext);
   const [posts,setPosts]=useState([])
   
-  // const url:string = 'https://api.nearly.site/posts?id='+selectedArea.id+'&radius='+selectedArea.radius
-  const url:string = 'http://localhost:3001/posts?id='+selectedArea.id+'&radius='+selectedArea.radius
+  const url:string = 'https://api.nearly.site/posts?id='+selectedArea.id+'&radius='+selectedArea.radius
+  // const url:string = 'http://localhost:3001/posts?id='+selectedArea.id+'&radius='+selectedArea.radius
 	
   const fetchData = async () => {
     const response = await fetch(url)
