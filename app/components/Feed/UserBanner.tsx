@@ -1,9 +1,10 @@
 import Image from "next/image"
 
-const UserName = ({name}) => <div className="">{name}</div>
-const UserCity = ({name,postcode}) => <div className="">{name} ({postcode})</div>
+const UserName = ({name}) => <div className="font-bold">{name}</div>
+const UserCity = ({name,postcode}) => <div className="">{name} {/* ({postcode}) */}</div>
 
 const UserBanner = ({data}) => {
+  console.log(data)
   return (
     <div className="flex w-full bg-blue-50">
       <div className="text-sm text-right w-full mx-3 py-2">

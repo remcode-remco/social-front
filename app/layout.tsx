@@ -26,7 +26,7 @@ export default function RootLayout({children}:{children: React.ReactNode}) {
   const [selectedArea, setSelectedArea] = useState<SelectedArea>({
     name:"Millwood (NY)",
     radius:10000,
-    id:7782,
+    id:100,
     latitude: 41.19472,
     longitude: -73.8002
   });

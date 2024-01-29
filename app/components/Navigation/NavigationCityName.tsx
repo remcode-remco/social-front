@@ -3,7 +3,7 @@
 const NavigationCityName = ({setShowCitySelect,name}:{setShowCitySelect:(showCitySelect:boolean)=>void,name:string}) => {
 
   return (
-    <div onClick={()=>setShowCitySelect(true)}>
+    <div className="cursor-pointer" onClick={()=>setShowCitySelect(true)}>
       {name}
     </div>
   )
