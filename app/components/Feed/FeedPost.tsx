@@ -10,7 +10,7 @@ import PostCity from "./PostCity"
 const FeedPost = ({post}) => {
   const [showReplies,setShowReplies]=useState(false)
   return (
-      <div className="shadow my-3">
+      <div className="shadow-lg shadow-gray-400 rounded-xl my-5">
         <UserBanner data={post.author} />
         <PostContent content={post.content} />
         <PostSubtext>
