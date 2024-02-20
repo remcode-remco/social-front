@@ -1,8 +1,10 @@
 'use client'
 import useSWR from 'swr'
 import React, { useContext, useEffect, useState } from "react"
-import FeedPost from "./Feed/FeedPost"
+import FeedItem from './Feed/FeedItem'
 import { NearlyContext } from "../context/context"
+
+
 
 const Feed = () => {
   const { selectedArea } = useContext(NearlyContext);
@@ -33,7 +35,7 @@ if (posts && posts.length > 0) {
     return (
       posts.map((post: any,index: React.Key | null | undefined)=>(
         <React.Fragment key={index}>
-          <FeedPost post={post}/>
+          <FeedItem post={post}/>
         </React.Fragment>
       ))
     )

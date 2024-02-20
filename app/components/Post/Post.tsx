@@ -7,7 +7,7 @@ import { NearlyContextReplies } from "@/app/context/context"
 import ActionBanner from "./ActionBanner"
 import PostCity from "./PostCity"
 
-const FeedPost = ({post}) => {
+const Post = ({post}) => {
   const [showReplies,setShowReplies]=useState(false)
   return (
       <div className="shadow-lg shadow-gray-400 rounded-xl my-5">
@@ -37,4 +37,4 @@ const FeedPost = ({post}) => {
   )
 }
 
-export default FeedPost
+export default Post
